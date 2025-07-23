@@ -14,7 +14,7 @@ class _SwiperBuilderState extends State<SwiperBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
+    return SizedBox(
       child: Column(
         children: [
           Padding(
@@ -58,9 +58,9 @@ class _SwiperBuilderState extends State<SwiperBuilder> {
 
     final fullCardNumbers = [
       {'balance': '1234 5678 9012 3456', 'cardName': "Settle"},
-      {'balance': '4321 8765 2109 6543', 'cardName': "Unsettle"},
-      {'balance': '1111 2222 3333 4444', 'cardName': "Transfer"},
       {'balance': '9999 8888 7777 6666', 'cardName': "Withdraw"},
+      {'balance': '1111 2222 3333 4444', 'cardName': "Transfer"},
+      {'balance': '4321 8765 2109 6543', 'cardName': "Unsettle"},
     ];
 
     return Container(

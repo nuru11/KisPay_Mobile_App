@@ -12,6 +12,7 @@ class AppAssets {
   static const String _baseLogo = 'assets/app_logo/';
   static const String _baseSplashImg = 'assets/images/onboarding_images/';
   static const String _baseGif = 'assets/images/gif/loading_icon/';
+  static const String _baseBanner = 'assets/images/banner/';
 
 
   static const String mainLogo = '${_baseLogo}kispay_logo.png';
@@ -22,5 +23,7 @@ class AppAssets {
   static const String onboarding3Png = '${_baseSplashImg}svgOnBoarding3.svg';
 
   static const String loadingIcon = '${_baseGif}loadingicon.gif';
+
+  static const String banner1 = '${_baseBanner}Banner1.png';
 
 }

@@ -1,7 +1,7 @@
 import 'package:kispay_merchant/bottom_nav/nav_bar.dart';
 import 'package:kispay_merchant/bottom_nav/nav_model.dart';
 import 'package:kispay_merchant/presentation/screens/auth/login_screen.dart';
-import 'package:kispay_merchant/presentation/screens/banks.dart';
+import 'package:kispay_merchant/presentation/screens/banks_screen.dart';
 import 'package:kispay_merchant/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 

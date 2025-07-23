@@ -4,9 +4,10 @@ import 'package:kispay_merchant/bottom_nav/main_screen.dart';
 import 'package:kispay_merchant/presentation/screens/auth/emailconfirmation_screen.dart';
 import 'package:kispay_merchant/presentation/screens/auth/forgetpassword_screen.dart';
 import 'package:kispay_merchant/presentation/screens/auth/signup_screen.dart';
-import 'package:kispay_merchant/presentation/screens/banks.dart';
+import 'package:kispay_merchant/presentation/screens/banks_screen.dart';
 import 'package:kispay_merchant/presentation/screens/curve_navigation/curve_navigation_bar.dart';
 import 'package:get/get.dart';
+import 'package:kispay_merchant/presentation/screens/transactions_list_screen.dart';
 import '../presentation/screens/auth/login_screen.dart';
 import '../presentation/screens/home_screen.dart';
 import '../presentation/bindings/auth_binding.dart';
@@ -23,6 +24,7 @@ class AppRoutes {
   static const String emailconfirmation = '/email_confirmation';
   static const String forgetpassword = '/forgetpassword';
   static const String curveBar = '/curve_bar';
+  static const String transactionsList = '/transactions_list';
 
   // Route definitions
   static final List<GetPage> routes = [
@@ -73,5 +75,12 @@ class AppRoutes {
       page: () => ForgetPasswordScreen(),
       // binding: AuthBinding(),
     ),
+
+    GetPage(
+      name: transactionsList,
+      page: () => TransactionsListScreen(),
+      // binding: AuthBinding(),
+    ),
+    
   ];
 }
