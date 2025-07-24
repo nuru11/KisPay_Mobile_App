@@ -112,6 +112,7 @@ flutter:
     - assets/app_logo/
     - assets/images/gif/loading_icon/
     - assets/images/banner/
+    - assets/images/banksimg/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
