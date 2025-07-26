@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class TransactionController extends GetxController {
-  var selectedFilter = 'Week'.obs;
+  var selectedFilter = 'All'.obs;
   var allTransactions = <Map<String, dynamic>>[].obs;
   var filteredTransactions = <Map<String, dynamic>>[].obs;
 
@@ -49,6 +49,7 @@ class TransactionController extends GetxController {
     DateTime cutoff;
 
     switch (selectedFilter.value) {
+      
       case 'Week':
         cutoff = now.subtract(const Duration(days: 7));
         break;

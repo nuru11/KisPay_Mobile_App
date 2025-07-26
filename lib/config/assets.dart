@@ -14,6 +14,7 @@ class AppAssets {
   static const String _baseGif = 'assets/images/gif/loading_icon/';
   static const String _baseBanner = 'assets/images/banner/';
   static const String _baseBanksImg = 'assets/images/banksimg/';
+  static const String _baseAll = 'assets/images/all/';
 
 
   static const String mainLogo = '${_baseLogo}kispay_logo.png';
@@ -36,5 +37,9 @@ class AppAssets {
   static const String abyssinia = '${_baseBanksImg}abyssinia.jpeg';
   static const String zemen = '${_baseBanksImg}zemen.png';
   static const String wegagen = '${_baseBanksImg}wegagen.png';  
+
+
+  /* All Images */
+  static const String personalImgPlaceHolder = '${_baseAll}imgplaceholder.jpeg';
 
 }

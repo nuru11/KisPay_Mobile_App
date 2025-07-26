@@ -58,7 +58,8 @@ Color yellow4C = const Color(0xffFFCD4C);
 
 
 
-Color mainColor = const Color(0xFFF58634);
+// Color mainColor = const Color(0xFFF58634);
+Color mainColor = const Color(0xFF3E4095);
 Color secondaryColor = const Color(0xFF404196);
 
 Color secondaryColorTeal = const Color(0xFF34F5F5);

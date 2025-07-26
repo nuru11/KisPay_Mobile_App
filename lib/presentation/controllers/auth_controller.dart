@@ -178,6 +178,8 @@ class AuthController extends GetxController {
   }
 }
 
+  void signUp(String trim, String trim2) {}
+
 }
 
 

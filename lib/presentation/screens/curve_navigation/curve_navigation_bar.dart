@@ -1,8 +1,11 @@
 import 'package:kispay_merchant/core/constant/colors.dart';
+import 'package:kispay_merchant/presentation/screens/auth/profile_screen.dart';
 import 'package:kispay_merchant/presentation/screens/banks_screen.dart';
+import 'package:kispay_merchant/presentation/screens/customers_list_screen.dart';
 import 'package:kispay_merchant/presentation/screens/home_screen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:kispay_merchant/presentation/screens/transactions_screens/transactions_list_screen_for_curve.dart';
 
 
 class CurveBar extends StatefulWidget {
@@ -25,18 +28,18 @@ class _CurveBarState extends State<CurveBar> {
   @override
   Widget build(BuildContext context) {
     final screen = [
-      BanksScreen(),
+      TransactionsListForCurveScreen(),
       BanksScreen(),
       HomeScreen(),
-      BanksScreen(),
-      BanksScreen(),
+      CustomersListScreen(),
+      ProfileScreen(),
     ];
 
     final items = [
-      const Icon(Icons.search, size: 30),
-      const Icon(Icons.shopping_bag, size: 30),
-      const Icon(Icons.home, size: 30),
       const Icon(Icons.receipt, size: 30),
+      const Icon(Icons.account_balance, size: 30),
+      const Icon(Icons.home, size: 30),
+      const Icon(Icons.people_alt, size: 30),
       const Icon(Icons.person, size: 30),
     ];
 

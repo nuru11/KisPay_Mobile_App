@@ -4,25 +4,17 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kispay_merchant/core/constant/colors.dart';
 import 'package:kispay_merchant/presentation/controllers/transaction_controller.dart';
+import 'package:kispay_merchant/presentation/widgets/app_bar_widget.dart';
 
-class TransactionsListScreen extends StatelessWidget {
-  const TransactionsListScreen({super.key});
+class TransactionsListForCurveScreen extends StatelessWidget {
+  const TransactionsListForCurveScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(TransactionController());
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Transactions', style: TextStyle(color: Colors.white)),
-        centerTitle: true,
-        backgroundColor: mainColor,
-        systemOverlayStyle: SystemUiOverlayStyle.light,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Get.back(), 
-        ),
-      ),
+      appBar: const CustomAppBar(title: 'Transactions'),
       body: Column(
         children: [
           const SizedBox(height: 12),
@@ -33,7 +25,7 @@ class TransactionsListScreen extends StatelessWidget {
                 child: DropdownButton<String>(
                   value: controller.selectedFilter.value,
                   isExpanded: true,
-                  items: ['Week', 'Month', 'Quarter', 'All']
+                  items: ['All', 'Week', 'Month', 'Quarter']
                       .map((label) => DropdownMenuItem(
                             value: label,
                             child: Text(label),

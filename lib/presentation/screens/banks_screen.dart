@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kispay_merchant/config/assets.dart';
+import 'package:kispay_merchant/core/constant/colors.dart';
+import 'package:kispay_merchant/presentation/widgets/app_bar_widget.dart';
 
 // ignore: use_key_in_widget_constructors
 class BanksScreen extends StatelessWidget {
@@ -42,7 +45,7 @@ class BanksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Banks")),
+      appBar: const CustomAppBar(title: 'Banks'),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

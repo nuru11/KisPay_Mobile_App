@@ -1,5 +1,9 @@
 
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:kispay_merchant/core/constant/colors.dart';
+import 'package:kispay_merchant/presentation/controllers/auth_controller.dart';
+import 'package:kispay_merchant/presentation/controllers/merchantDetails_controller.dart';
 import 'package:kispay_merchant/presentation/widgets/home_screen_banner.dart';
 import 'package:kispay_merchant/presentation/widgets/quick_access_grid_widget.dart';
 import 'package:kispay_merchant/presentation/widgets/swiper_widget.dart';
@@ -16,6 +20,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final AuthController controller = Get.find<AuthController>();
+
+  final MerchantDetailsController controllerNN = Get.find<MerchantDetailsController>();
 
   List<bool> showFullCardNumber = [false, false, false, false];
   @override
@@ -35,8 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
   ),
 ),
     appBar: PreferredSize(
+
   preferredSize: const Size.fromHeight(40.0),
   child: AppBar(
+    automaticallyImplyLeading: false,
     backgroundColor: mainColor,
     systemOverlayStyle: SystemUiOverlayStyle.light,
     toolbarHeight: 40.0,
@@ -45,29 +55,12 @@ class _HomeScreenState extends State<HomeScreen> {
       style: TextStyle(color: Colors.white),
     ),
     actions: [
-      PopupMenuButton<String>(
-        onSelected: (value) {
-          
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Selected: $value')),
-          );
-        },
-        icon: const Icon(Icons.language, color: Colors.white),
-        itemBuilder: (context) => [
-          const PopupMenuItem(
-            value: 'en',
-            child: Text('English'),
-          ),
-          const PopupMenuItem(
-            value: 'am',
-            child: Text('Amharic'),
-          ),
-          const PopupMenuItem(
-            value: 'ar',
-            child: Text('Arabic'),
-          ),
-        ],
-      ),
+     IconButton(
+              icon: Icon(Icons.logout, color: Colors.white),
+              onPressed: () {
+                controller.signOut();
+              },
+            ),
     ],
   ),
 ),
