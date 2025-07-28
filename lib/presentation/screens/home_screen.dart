@@ -1,6 +1,4 @@
-
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:kispay_merchant/core/constant/colors.dart';
 import 'package:kispay_merchant/presentation/controllers/auth_controller.dart';
 import 'package:kispay_merchant/presentation/controllers/merchantDetails_controller.dart';
@@ -20,51 +18,56 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   final AuthController controller = Get.find<AuthController>();
+  final MerchantDetailsController merchantController = Get.find<MerchantDetailsController>();
 
-  final MerchantDetailsController controllerNN = Get.find<MerchantDetailsController>();
+  @override
+  void initState() {
+    super.initState();
+    merchantController.merchantDetails();
+    // Check if user is logged in
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //   if (!controller.isUserLoggedIn()) {
+  //     Get.offNamed('/login'); // Navigate to login page if not logged in
+  //   }
+  // });
+  }
 
-  List<bool> showFullCardNumber = [false, false, false, false];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: mainColor,
-
       floatingActionButton: Padding(
-  padding: const EdgeInsets.only(bottom: 50.0),
-  child: FloatingActionButton(
-    backgroundColor: mainColor,
-    onPressed: () {
-      // ignore: deprecated_member_use
-      launch('sms:+251966202667');
-    },
-    child: Icon(Icons.call, color: Colors.white),
-  ),
-),
-    appBar: PreferredSize(
-
-  preferredSize: const Size.fromHeight(40.0),
-  child: AppBar(
-    automaticallyImplyLeading: false,
-    backgroundColor: mainColor,
-    systemOverlayStyle: SystemUiOverlayStyle.light,
-    toolbarHeight: 40.0,
-    title: const Text(
-      'Hi, Nuru',
-      style: TextStyle(color: Colors.white),
-    ),
-    actions: [
-     IconButton(
+        padding: const EdgeInsets.only(bottom: 50.0),
+        child: FloatingActionButton(
+          backgroundColor: mainColor,
+          onPressed: () {
+            launch('sms:+251966202667');
+          },
+          child: Icon(Icons.call, color: Colors.white),
+        ),
+      ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(40.0),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: mainColor,
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+          toolbarHeight: 40.0,
+          title: Obx(() => Text(
+            controller.firstName.value.isNotEmpty ? "Hi, ${controller.firstName.value}" : "Hi, Nuru",
+            style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+          )),
+          actions: [
+            IconButton(
               icon: Icon(Icons.logout, color: Colors.white),
               onPressed: () {
                 controller.signOut();
               },
             ),
-    ],
-  ),
-),
-
+          ],
+        ),
+      ),
       body: Column(
         children: [
           SizedBox(
@@ -83,15 +86,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     QuickAccessGridWidget(),
                     const SizedBox(height: 20),
-                     SizedBox(
+                    SizedBox(
                       height: 150,
-                      child: HomeScreenBanner()),
+                      child: HomeScreenBanner(),
+                    ),
                     const SizedBox(height: 20),
                     RecentTransactionBox(),
                     const SizedBox(height: 55),
-                   
-                   
-                    
                   ],
                 ),
               ),
@@ -101,14 +102,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-
- 
-
-
- 
- 
-
-
-
 }

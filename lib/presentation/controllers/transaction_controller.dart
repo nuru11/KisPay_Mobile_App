@@ -20,25 +20,25 @@ class TransactionController extends GetxController {
       {
         'title': 'Paid to Kispay',
         'date': now.subtract(const Duration(days: 1)),
-        'amount': '- \$40.00',
+        'amount': '- ETB 40.00',
         'isDebit': true,
       },
       {
         'title': 'Received from Sara',
         'date': now.subtract(const Duration(days: 10)),
-        'amount': '+ \$120.00',
+        'amount': '+ ETB 120.00',
         'isDebit': false,
       },
       {
         'title': 'Top-Up from Bank',
         'date': now.subtract(const Duration(days: 40)),
-        'amount': '+ \$250.00',
+        'amount': '+ ETB 250.00',
         'isDebit': false,
       },
       {
         'title': 'Quarterly Bonus',
         'date': now.subtract(const Duration(days: 90)),
-        'amount': '+ \$500.00',
+        'amount': '+ ETB 500.00',
         'isDebit': false,
       },
     ];

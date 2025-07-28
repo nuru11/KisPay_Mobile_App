@@ -129,7 +129,7 @@ class _SwiperBuilderState extends State<SwiperBuilder> {
             style: TextStyle(color: Colors.black54),
           ),
           Text(
-            '\$${(index + 1) * 1234.56}',
+            'ETB ${(index + 1) * 1234.56}',
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,

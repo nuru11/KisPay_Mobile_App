@@ -107,7 +107,7 @@ flutter:
 
   assets:
     - assets/
-    - assets/app_logo/main_logo.png
+    - assets/app_logo/main_logo800.png
     - assets/images/onboarding_images/
     - assets/app_logo/
     - assets/images/gif/loading_icon/
@@ -143,5 +143,5 @@ flutter:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/app_logo/kispay_logo.png"
+  image_path: "assets/app_logo/main_logo800.png"
 

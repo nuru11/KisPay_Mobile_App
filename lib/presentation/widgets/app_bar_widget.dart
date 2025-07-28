@@ -25,7 +25,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       centerTitle: centerTitle,
       backgroundColor: mainColor,
-      systemOverlayStyle: SystemUiOverlayStyle.light,
+      systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
+        statusBarColor: Colors.transparent, // Make the status bar transparent
+        systemStatusBarContrastEnforced: false, // Optional: allows the icons to be visible on top of the app bar
+      ),
       automaticallyImplyLeading: showBack,
       actions: actions,
     );

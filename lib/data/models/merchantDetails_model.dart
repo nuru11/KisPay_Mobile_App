@@ -1,8 +1,10 @@
 class MerchantDetailResponse {
   final String businessName;
+  final String phoneNumber;
 
   MerchantDetailResponse({
     required this.businessName,
+    required this.phoneNumber,
    
   });
 
@@ -14,6 +16,7 @@ class MerchantDetailResponse {
         ) {
       return MerchantDetailResponse(
         businessName: json["body"]["kyc"]["businessDetails"]["businessName"],
+        phoneNumber: json["body"]["phoneNumber"],
       );
     } else {
       throw Exception("Invalid API response: Token or KYC or Business Details not found");

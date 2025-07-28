@@ -1,13 +1,6 @@
 class AppAssets {
 
 
-
-
-
-
-
-
-
   // static const String _basePng = 'assets/image/png/';
   static const String _baseLogo = 'assets/app_logo/';
   static const String _baseSplashImg = 'assets/images/onboarding_images/';
@@ -17,16 +10,24 @@ class AppAssets {
   static const String _baseAll = 'assets/images/all/';
 
 
-  static const String mainLogo = '${_baseLogo}kispay_logo.png';
+  static const String mainLogo = '${_baseLogo}main_logo.png';
+
+// onboarding images
+  static const String onboarding1Png = '${_baseSplashImg}onboardingbanking1.svg';
+  static const String onboarding2Png = '${_baseSplashImg}onboardingprotected2.svg';
+  static const String onboarding3Png = '${_baseSplashImg}onboardingPurchaseonline3.svg';
+
+  static const String onboardingShape1 = '${_baseSplashImg}onboardingshape1.svg';
+  static const String onboardingShape2 = '${_baseSplashImg}onboardingshape2.svg';
+  static const String onboardingShape3 = '${_baseSplashImg}onboardingshape3.svg';
+
+  static const String loadingIcon = '${_baseGif}kispayloadingicon.gif';
 
 
-  static const String onboarding1Png = '${_baseSplashImg}svgOnBoarding1.svg';
-  static const String onboarding2Png = '${_baseSplashImg}svgOnBoarding2.svg';
-  static const String onboarding3Png = '${_baseSplashImg}svgOnBoarding3.svg';
-
-  static const String loadingIcon = '${_baseGif}loadingicon.gif';
-
-  static const String banner1 = '${_baseBanner}Banner1.png';
+  /* Banner Images */
+  static const String banner1 = '${_baseBanner}banner_1.png';
+  static const String banner2 = '${_baseBanner}banner_2.png';
+  static const String banner3 = '${_baseBanner}banner_3.png';
 
   /* Banks Images */
   static const String cbe = '${_baseBanksImg}cbe.jpeg';

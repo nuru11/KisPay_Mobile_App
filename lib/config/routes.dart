@@ -8,6 +8,8 @@ import 'package:kispay_merchant/presentation/screens/auth/signup_screen.dart';
 import 'package:kispay_merchant/presentation/screens/banks_screen.dart';
 import 'package:kispay_merchant/presentation/screens/curve_navigation/curve_navigation_bar.dart';
 import 'package:get/get.dart';
+import 'package:kispay_merchant/presentation/screens/customers_list_screen.dart';
+import 'package:kispay_merchant/presentation/screens/splash_screen.dart';
 import 'package:kispay_merchant/presentation/screens/transactions_screens/transactions_list_screen.dart';
 import '../presentation/screens/auth/login_screen.dart';
 import '../presentation/screens/home_screen.dart';
@@ -27,6 +29,8 @@ class AppRoutes {
   static const String curveBar = '/curve_bar';
   static const String transactionsList = '/transactions_list';
   static const String profile = '/profile';
+  static const String splash = '/splash';
+  static const String customersList = '/customers_list';
 
   // Route definitions
   static final List<GetPage> routes = [
@@ -86,6 +90,18 @@ class AppRoutes {
     GetPage(
       name: profile,
       page: () => ProfileScreen(),
+      binding: CombinedBinding(),
+    ),
+
+    GetPage(
+      name: splash,
+      page: () => SplashScreen(),
+      binding: CombinedBinding(),
+    ),
+
+    GetPage(
+      name: customersList,
+      page: () => CustomersListScreen(),
       binding: CombinedBinding(),
     ),
     

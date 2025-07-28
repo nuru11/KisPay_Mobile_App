@@ -51,6 +51,33 @@ class HomeScreenBanner extends StatelessWidget {
           ),
         ),
 
+        Container(
+          margin: const EdgeInsets.all(5),
+          height: 150,
+          width: double.infinity,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.asset(
+              AppAssets.banner2,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+
+
+        Container(
+          margin: const EdgeInsets.all(5),
+          height: 150,
+          width: double.infinity,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.asset(
+              AppAssets.banner3,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+
      
 
   

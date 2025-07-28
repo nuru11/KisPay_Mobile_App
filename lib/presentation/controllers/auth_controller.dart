@@ -13,6 +13,7 @@ class AuthController extends GetxController {
   final RxString errorMessage = RxString('');
   final RxString userName = RxString('');
   final RxString firstName = RxString('');
+  final RxString email = RxString('');
   final RxString role = RxString('');
   final RxString id = RxString('');
   final RxString forgetPasswordMessage = RxString('');
@@ -30,6 +31,7 @@ class AuthController extends GetxController {
     try {
       final storedFirstName = await secureStorage.read('first_name');
       final storedLastName = await secureStorage.read('last_name');
+      final storedEmail = await secureStorage.read('email');
       final storedRole = await secureStorage.read('role');
       final storedId = await secureStorage.read('id');
 
@@ -39,6 +41,11 @@ class AuthController extends GetxController {
       }
       if (storedLastName != null && storedFirstName != null) {
         userName.value = '$storedFirstName $storedLastName';
+      }
+      if (storedEmail != null) {
+        // Assuming you want to store email in a variable, but it's not used in the controller
+        // You can add an RxString for email if needed
+        email.value = storedEmail;
       }
       if (storedRole != null) {
         role.value = storedRole;
@@ -62,6 +69,7 @@ class AuthController extends GetxController {
       await secureStorage.write('auth_token', response.token);
       await secureStorage.write('first_name', response.firstName);
       await secureStorage.write('last_name', response.lastName);
+      await secureStorage.write('email', response.email);
       await secureStorage.write('role', response.roles.isNotEmpty ? response.roles[0] : '');
       await secureStorage.write('id', response.id);
 
@@ -69,11 +77,12 @@ class AuthController extends GetxController {
       userName.value = '${response.firstName} ${response.lastName}';
       role.value = response.roles.isNotEmpty ? response.roles[0] : '';
       id.value = response.id;
+      this.email.value = response.email; // Store email in the controller
 
 
 
       loginStatus.value = 'success';
-      Get.offNamed('/main_screen');
+      Get.offNamed('/curve_bar');
     } catch (e) {
       loginStatus.value = 'error';
       errorMessage.value = e.toString().replaceFirst('Exception: ', '');
@@ -179,6 +188,13 @@ class AuthController extends GetxController {
 }
 
   void signUp(String trim, String trim2) {}
+
+
+
+  bool isUserLoggedIn() {
+    return id.value.isNotEmpty; // Check if user ID is available
+    
+  }
 
 }
 

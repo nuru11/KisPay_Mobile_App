@@ -13,6 +13,7 @@ class MerchantDetailsController extends GetxController {
   final RxString FetchStatus = RxString('idle');
   final RxString errorMessage = RxString('');
   final RxString businessName = RxString('');
+  final RxString phoneNumber = RxString('');
 
   MerchantDetailsController({
     required this.merchantDetailsRepository,
@@ -27,9 +28,13 @@ class MerchantDetailsController extends GetxController {
   Future<void> _loadStoredValues() async {
     try {
       final storedbusinessName = await secureStorage.read('business_name');
+      final storedPhoneNumber = await secureStorage.read('phone_number');
       
       if (storedbusinessName != null) {
         businessName.value = storedbusinessName;
+      }
+      if (storedPhoneNumber != null) {
+        phoneNumber.value = storedPhoneNumber;
       }
     } catch (e) {
       print('Error loading stored values: $e');
@@ -43,6 +48,7 @@ class MerchantDetailsController extends GetxController {
     
     // Read the token from secure storage
     final storedToken = await secureStorage.read('auth_token');
+    
 
     print('Stored Tokenaaaaaaaaaaaa: $storedToken');
     
@@ -61,7 +67,12 @@ class MerchantDetailsController extends GetxController {
     if (response.businessName != null) {
       await secureStorage.write('business_name', response.businessName);
       businessName.value = response.businessName;
-    } else {
+    } 
+    if (response.phoneNumber != null) {
+      await secureStorage.write('phone_number', response.phoneNumber);
+      phoneNumber.value = response.phoneNumber;
+    }
+    else {
       throw Exception('Business name not found in response');
     }
 

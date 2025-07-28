@@ -77,60 +77,77 @@ class _OnboardingViewState extends State<OnboardingView> {
   }
 
   Widget _buildOnboardingPage(dynamic item, int index, double height, double width) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width * 0.06),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Flexible(
-            flex: 4,
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: index % 2 == 0 ? 0 : height * 0.04,
-                bottom: index % 2 == 0 ? height * 0.04 : 0,
-              ),
-              child: SvgPicture.asset(
-                item.image,
-                fit: BoxFit.contain,
-                height: height * 0.4,
-              ),
-            ),
-          ),
-          Flexible(
-            flex: 3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  item.title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: width < 360 ? 20 : 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    height: 1.3,
-                  ),
-                ),
-                SizedBox(height: height * 0.02),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: width * 0.04),
-                  child: Text(
-                    item.descriptions,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.grey.shade600,
-                      fontSize: width < 360 ? 14 : 16,
-                      height: 1.5,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+  return Stack(
+    children: [
+      // Top SVG shape for visual identity
+      Positioned(
+        top: 0,
+        left: 0,
+        right: 0,
+        child: SvgPicture.asset(
+          item.shape,
+          width: width,
+          height: height * 0.14,
+          fit: BoxFit.cover,
+        ),
       ),
-    );
-  }
+
+      // Content layout
+      Padding(
+        padding: EdgeInsets.only(
+          top: height * 0.18,
+          left: width * 0.06,
+          right: width * 0.06,
+          bottom: height * 0.05,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // Onboarding image
+            SvgPicture.asset(
+              item.image,
+              height: height * 0.28,
+              fit: BoxFit.contain,
+            ),
+
+            SizedBox(height: height * 0.05),
+
+            // Title
+            Text(
+              item.title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: width < 360 ? 20 : 26,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+                letterSpacing: 0.3,
+                height: 1.4,
+              ),
+            ),
+
+            SizedBox(height: height * 0.025),
+
+            // Description
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: width * 0.03),
+              child: Text(
+                item.descriptions,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.grey.shade600,
+                  fontSize: width < 360 ? 14 : 16,
+                  fontWeight: FontWeight.w400,
+                  height: 1.6,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
+}
+
 
   Widget _buildNavigationButtons(double width) {
     return Row(

@@ -6,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:kispay_merchant/core/constant/colors.dart'; // adjust your colors here
 import 'package:kispay_merchant/config/assets.dart';
 import 'package:kispay_merchant/presentation/controllers/auth_controller.dart';
+import 'package:kispay_merchant/presentation/controllers/merchantDetails_controller.dart';
 import 'package:kispay_merchant/presentation/widgets/app_bar_widget.dart'; // if you have any custom assets
 
 class ProfileScreen extends StatelessWidget {
@@ -15,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthController controller = Get.find<AuthController>();
+    final MerchantDetailsController merchantController = Get.find<MerchantDetailsController>();
     return Scaffold(
       backgroundColor: Colors.white, 
 
@@ -31,19 +33,25 @@ class ProfileScreen extends StatelessWidget {
               backgroundColor: Colors.grey[300],
             ),
             const SizedBox(height: 12),
-            const Text(
-              'Nuru Ibrahim',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const Text(
-              'nuru@gmail.com',
-              style: TextStyle(color: Colors.grey),
-            ),
-            const Text(
-              '+251 966 292 667',
-              style: TextStyle(color: Colors.grey),
-            ),
-            const SizedBox(height: 25),
+             Obx(() => Text(
+            controller.firstName.value.isNotEmpty ? controller.firstName.value : "Nuru",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          )),
+
+
+           Obx(() => Text(
+            controller.email.value.isNotEmpty ? controller.email.value : "nuru@example.com",
+            style: TextStyle(color: Colors.grey),
+          )),
+
+
+
+          
+          Obx(() => Text(
+            merchantController.phoneNumber.value.isNotEmpty ? merchantController.phoneNumber.value : "+251 966 292 667",
+            style: TextStyle(color: Colors.grey),
+          )),
+          const SizedBox(height: 25),
 
             _buildActionTile(
               icon: Icons.edit,
