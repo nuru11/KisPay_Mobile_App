@@ -88,7 +88,17 @@ class ProfileScreen extends StatelessWidget {
                 style: TextStyle(color: Colors.red, fontWeight: FontWeight.w600),
               ),
               onTap: () {
-              controller.signOut();
+               Get.defaultDialog(
+                title: "Confirm Logout",
+                content: const Text("Are you sure you want to log out?"),
+                textCancel: "Cancel",
+                textConfirm: "Logout",
+                confirmTextColor: Colors.white,
+                onConfirm: () {
+                  // perform logout here
+                  controller.signOut();
+                },
+              );
               },
             ),
 

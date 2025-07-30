@@ -75,21 +75,26 @@
 // }
 
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:kispay_merchant/config/routes.dart';
+import 'package:kispay_merchant/core/services/locale_service.dart';
+import 'package:kispay_merchant/core/translations/translations.dart';
 import 'package:kispay_merchant/presentation/bindings/auth_binding.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
+  Locale? savedLocale = await LocaleService.getSavedLocale(); 
+
+  runApp(MyApp(savedLocale: savedLocale));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  final Locale? savedLocale;
+
+  const MyApp({super.key, required this.savedLocale});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -112,7 +117,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    // Optional: Clear secure storage when app is closed or backgrounded
     if (state == AppLifecycleState.detached || state == AppLifecycleState.inactive) {
       _clearSecureStorage();
     }
@@ -126,6 +130,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      translations: AppTranslations(),
+      locale: widget.savedLocale ?? const Locale('en', 'US'),
+      fallbackLocale: const Locale('en', 'US'),
       debugShowCheckedModeBanner: false,
       title: 'KisPay Merchant',
       initialBinding: AuthBinding(),

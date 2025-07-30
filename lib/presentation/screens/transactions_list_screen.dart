@@ -6,8 +6,8 @@ import 'package:kispay_merchant/core/constant/colors.dart';
 import 'package:kispay_merchant/presentation/controllers/transaction_controller.dart';
 import 'package:kispay_merchant/presentation/widgets/app_bar_widget.dart';
 
-class TransactionsListForCurveScreen extends StatelessWidget {
-  const TransactionsListForCurveScreen({super.key});
+class TransactionsListScreen extends StatelessWidget {
+  const TransactionsListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class TransactionsListForCurveScreen extends StatelessWidget {
                 child: DropdownButton<String>(
                   value: controller.selectedFilter.value,
                   isExpanded: true,
-                  items: ['All', 'Week', 'Month', 'Quarter']
+                  items: ['All', 'Week', 'Month', 'Quarter' ]
                       .map((label) => DropdownMenuItem(
                             value: label,
                             child: Text(label),

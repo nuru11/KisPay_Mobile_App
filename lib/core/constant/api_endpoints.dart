@@ -1,6 +1,6 @@
 // lib/core/constants/api_endpoints.dart
 class ApiEndpoints {
-  static const String baseUrl = 'https://api.afropay.co/api';
+  static const String baseUrl = 'https://api.kispay.et/api';
 
   /* Authentication */
   static const String login = '$baseUrl/auth/login';

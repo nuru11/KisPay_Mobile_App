@@ -9,8 +9,14 @@ import 'package:kispay_merchant/presentation/screens/banks_screen.dart';
 import 'package:kispay_merchant/presentation/screens/curve_navigation/curve_navigation_bar.dart';
 import 'package:get/get.dart';
 import 'package:kispay_merchant/presentation/screens/customers_list_screen.dart';
+import 'package:kispay_merchant/presentation/screens/payment_link_screen.dart';
+import 'package:kispay_merchant/presentation/screens/qr_payment_screen.dart';
+import 'package:kispay_merchant/presentation/screens/refund_screen.dart';
+import 'package:kispay_merchant/presentation/screens/report_screen.dart';
+import 'package:kispay_merchant/presentation/screens/setting_screen.dart';
+import 'package:kispay_merchant/presentation/screens/settle_funds_screen.dart';
 import 'package:kispay_merchant/presentation/screens/splash_screen.dart';
-import 'package:kispay_merchant/presentation/screens/transactions_screens/transactions_list_screen.dart';
+import 'package:kispay_merchant/presentation/screens/transactions_list_screen.dart';
 import '../presentation/screens/auth/login_screen.dart';
 import '../presentation/screens/home_screen.dart';
 import '../presentation/bindings/auth_binding.dart';
@@ -31,6 +37,12 @@ class AppRoutes {
   static const String profile = '/profile';
   static const String splash = '/splash';
   static const String customersList = '/customers_list';
+  static const String paymentLinks = '/payment_links';
+  static const String settleFunds = '/settle_funds';
+  static const String refund = '/refund';
+  static const String qrPayment = '/qr_payment';
+  static const String report = '/report';
+  static const String setting = '/setting';
 
   // Route definitions
   static final List<GetPage> routes = [
@@ -104,6 +116,43 @@ class AppRoutes {
       page: () => CustomersListScreen(),
       binding: CombinedBinding(),
     ),
-    
+
+    GetPage(
+      name: paymentLinks,
+      page: () => PaymentLinksScreen(),
+      binding: CombinedBinding(),
+    ),
+
+
+    GetPage(
+      name: settleFunds,
+      page: () => SettleFundScreen(),
+      // binding: CombinedBinding(),
+    ),
+
+    GetPage(
+      name: refund, 
+      page: () => RefundScreen(),
+      ),
+
+      GetPage(
+        name: qrPayment,
+        page: () => QRPaymentScreen(),
+      ),
+
+      GetPage(
+        name: report,
+        page: () => ReportScreen(),
+      ),
+
+      GetPage(
+        name: setting,
+        page: () => SettingsScreen(),
+      )
+
+
+
+
+
   ];
 }

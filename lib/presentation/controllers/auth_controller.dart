@@ -77,7 +77,7 @@ class AuthController extends GetxController {
       userName.value = '${response.firstName} ${response.lastName}';
       role.value = response.roles.isNotEmpty ? response.roles[0] : '';
       id.value = response.id;
-      this.email.value = response.email; // Store email in the controller
+      this.email.value = response.email; 
 
 
 
