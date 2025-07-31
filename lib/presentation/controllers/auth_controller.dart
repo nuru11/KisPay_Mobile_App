@@ -18,6 +18,10 @@ class AuthController extends GetxController {
   final RxString id = RxString('');
   final RxString forgetPasswordMessage = RxString('');
 
+  final RxString middleName = RxString('');
+final RxString lastName = RxString('');
+
+
   AuthController({
     required this.authRepository,
     required this.secureStorage,
@@ -34,6 +38,15 @@ class AuthController extends GetxController {
       final storedEmail = await secureStorage.read('email');
       final storedRole = await secureStorage.read('role');
       final storedId = await secureStorage.read('id');
+
+      final storedMiddleName = await secureStorage.read('middle_name');
+if (storedMiddleName != null) {
+  middleName.value = storedMiddleName;
+}
+if (storedLastName != null) {
+  lastName.value = storedLastName;
+}
+
 
 
       if (storedFirstName != null) {
@@ -72,6 +85,10 @@ class AuthController extends GetxController {
       await secureStorage.write('email', response.email);
       await secureStorage.write('role', response.roles.isNotEmpty ? response.roles[0] : '');
       await secureStorage.write('id', response.id);
+
+      await secureStorage.write('middle_name', response.middleName);
+middleName.value = response.middleName;
+lastName.value = response.lastName;
 
       firstName.value = response.firstName;
       userName.value = '${response.firstName} ${response.lastName}';
@@ -188,6 +205,32 @@ class AuthController extends GetxController {
 }
 
   void signUp(String trim, String trim2) {}
+
+
+
+  Future<void> updateProfile({
+    required String newFirstName,
+    required String newMiddleName,
+    required String newLastName,
+  }) async {
+    try {
+      // Save to storage
+      await secureStorage.write('first_name', newFirstName);
+      await secureStorage.write('middle_name', newMiddleName);
+      await secureStorage.write('last_name', newLastName);
+
+      // Update controller state
+      firstName.value = newFirstName;
+      middleName.value = newMiddleName;
+      lastName.value = newLastName;
+      userName.value = '$newFirstName $newLastName';
+
+      Get.snackbar('Success', 'Profile updated successfully');
+    } catch (e) {
+      Get.snackbar('Error', 'Failed to update profile');
+    }
+  }
+
 
 
 

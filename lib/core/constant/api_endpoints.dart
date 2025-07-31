@@ -7,10 +7,13 @@ class ApiEndpoints {
   static const String register = '$baseUrl/auth/register';
   static const String resendConfirmationEmail = "$baseUrl/auth/resend-verification-email";
   static const String forgetPassword = "$baseUrl/auth/forgot-password";
+  static const String updateUserInformation = "$baseUrl/auth/users/update_user_information";
+  static const String changePassword = "$baseUrl/auth/change-password";
 
 
   
   static const String merchantDetails = '$baseUrl/merchants/self';
+  
 
 
 

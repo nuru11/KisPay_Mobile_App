@@ -56,17 +56,23 @@ class ProfileScreen extends StatelessWidget {
             _buildActionTile(
               icon: Icons.edit,
               title: 'Edit Profile',
-              onTap: () {},
+              onTap: () {
+                Get.toNamed('/update_user_information'); 
+              },
             ),
             _buildActionTile(
               icon: Icons.lock,
               title: 'Change Password',
-              onTap: () {},
+              onTap: () {
+                Get.toNamed('/edit_password');
+              },
             ),
             _buildActionTile(
               icon: Icons.account_balance,
               title: 'Linked Bank Accounts',
-              onTap: () {},
+              onTap: () {
+                Get.toNamed('/payment_links');
+              },
             ),
             _buildActionTile(
               icon: Icons.security,
@@ -76,7 +82,9 @@ class ProfileScreen extends StatelessWidget {
             _buildActionTile(
               icon: Icons.help_outline,
               title: 'Help & Support',
-              onTap: () {},
+              onTap: () {
+                
+              },
             ),
             const SizedBox(height: 10),
 

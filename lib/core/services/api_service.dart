@@ -115,4 +115,39 @@ class ApiService {
       throw Exception('Merchant details error: $e');
     }
   }
+
+
+  Future<Map<String, dynamic>> updateProfile({
+  required String token,
+  required String userId,
+  required String firstName,
+  required String middleName,
+  required String lastName,
+}) async {
+  try {
+    final response = await http.put(
+      Uri.parse(ApiEndpoints.updateUserInformation),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode({
+        'firstName': firstName,
+        'middleName': middleName,
+        'lastName': lastName,
+      }),
+    ).timeout(Duration(seconds: 30));
+
+    final data = jsonDecode(response.body);
+    if (response.statusCode == 200 && data.containsKey('body')) {
+      merchantDetails(token); // Refresh merchant details after update
+      return data;
+    } else {
+      throw Exception(data['message'] ?? 'Update profile failed');
+    }
+  } catch (e) {
+    throw Exception('Update profile error: $e');
+  }
+}
+
 }

@@ -5,10 +5,12 @@ import 'package:kispay_merchant/presentation/screens/auth/emailconfirmation_scre
 import 'package:kispay_merchant/presentation/screens/auth/forgetpassword_screen.dart';
 import 'package:kispay_merchant/presentation/screens/auth/profile_screen.dart';
 import 'package:kispay_merchant/presentation/screens/auth/signup_screen.dart';
+import 'package:kispay_merchant/presentation/screens/auth/updateUserInformation_screen.dart';
 import 'package:kispay_merchant/presentation/screens/banks_screen.dart';
 import 'package:kispay_merchant/presentation/screens/curve_navigation/curve_navigation_bar.dart';
 import 'package:get/get.dart';
 import 'package:kispay_merchant/presentation/screens/customers_list_screen.dart';
+import 'package:kispay_merchant/presentation/screens/editPassword_screen.dart';
 import 'package:kispay_merchant/presentation/screens/payment_link_screen.dart';
 import 'package:kispay_merchant/presentation/screens/qr_payment_screen.dart';
 import 'package:kispay_merchant/presentation/screens/refund_screen.dart';
@@ -43,6 +45,8 @@ class AppRoutes {
   static const String qrPayment = '/qr_payment';
   static const String report = '/report';
   static const String setting = '/setting';
+  static const String updateUserInformation = '/update_user_information';
+  static const String editPassword = '/edit_password';
 
   // Route definitions
   static final List<GetPage> routes = [
@@ -148,11 +152,17 @@ class AppRoutes {
       GetPage(
         name: setting,
         page: () => SettingsScreen(),
-      )
+      ),
 
+      GetPage(
+        name: updateUserInformation,
+        page: () => EditProfileScreen(),
+      ),
 
-
-
+      GetPage(
+        name: editPassword,
+        page: () => ChangePasswordScreen(),
+      ),  
 
   ];
 }

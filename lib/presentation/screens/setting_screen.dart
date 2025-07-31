@@ -106,7 +106,9 @@ class SettingsScreen extends StatelessWidget {
       subtitle: const Text("merchant@example.com"),
       trailing: IconButton(
         icon: Icon(Icons.edit, color: mainColor),
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed('/update_user_information');
+        },
       ),
     );
   }
