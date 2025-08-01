@@ -32,5 +32,10 @@ class AuthService {
     return ForgetPasswordResponse.fromJson(data);
   }
 
+  Future<ForgetPasswordResponse> changePassword(String token, String oldPassword, String newPassword) async {
+    final data = await apiService.changePassword(token, oldPassword, newPassword);
+    return ForgetPasswordResponse.fromJson(data);
+  }
+
   
 }

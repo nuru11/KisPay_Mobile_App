@@ -150,4 +150,29 @@ class ApiService {
   }
 }
 
+  Future<Map<String, dynamic>> changePassword(String token, String oldPassword, String newPassword) async {
+    try {
+      final response = await http.post(
+        Uri.parse(ApiEndpoints.changePassword),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: jsonEncode({
+          'oldPassword': oldPassword,
+          'newPassword': newPassword,
+        }),
+      ).timeout(Duration(seconds: 30));
+
+      final data = jsonDecode(response.body);
+      if (response.statusCode == 200 && data.containsKey('body')) {
+        return data;
+      } else {
+        throw Exception(data['message'] ?? 'Change password failed');
+      }
+    } catch (e) {
+      throw Exception('Change password error: $e');
+    }
+  }
+
 }

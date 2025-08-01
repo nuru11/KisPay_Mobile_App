@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:kispay_merchant/data/repositories/auth_respository.dart';
 import 'package:get/get.dart';
 import '../../core/services/secure_storage.dart';
@@ -19,7 +20,11 @@ class AuthController extends GetxController {
   final RxString forgetPasswordMessage = RxString('');
 
   final RxString middleName = RxString('');
-final RxString lastName = RxString('');
+  final RxString lastName = RxString('');
+
+  final TextEditingController oldPasswordController = TextEditingController();
+  final TextEditingController newPasswordController = TextEditingController();
+  final RxString changePasswordStatus = RxString('idle');
 
 
   AuthController({
@@ -208,29 +213,73 @@ lastName.value = response.lastName;
 
 
 
-  Future<void> updateProfile({
-    required String newFirstName,
-    required String newMiddleName,
-    required String newLastName,
-  }) async {
-    try {
-      // Save to storage
-      await secureStorage.write('first_name', newFirstName);
-      await secureStorage.write('middle_name', newMiddleName);
-      await secureStorage.write('last_name', newLastName);
+  // Future<void> updateProfile({
+  //   required String newFirstName,
+  //   required String newMiddleName,
+  //   required String newLastName,
+  // }) async {
+  //   try {
+  //     // Save to storage
+  //     await secureStorage.write('first_name', newFirstName);
+  //     await secureStorage.write('middle_name', newMiddleName);
+  //     await secureStorage.write('last_name', newLastName);
 
-      // Update controller state
-      firstName.value = newFirstName;
-      middleName.value = newMiddleName;
-      lastName.value = newLastName;
-      userName.value = '$newFirstName $newLastName';
+  //     // Update controller state
+  //     firstName.value = newFirstName;
+  //     middleName.value = newMiddleName;
+  //     lastName.value = newLastName;
+  //     userName.value = '$newFirstName $newLastName';
 
-      Get.snackbar('Success', 'Profile updated successfully');
-    } catch (e) {
-      Get.snackbar('Error', 'Failed to update profile');
+  //     Get.snackbar('Success', 'Profile updated successfully');
+  //   } catch (e) {
+  //     Get.snackbar('Error', 'Failed to update profile');
+  //   }
+  // }
+
+
+
+Future<void> changePassword({
+  
+  required String oldPassword,
+  required String newPassword,
+}) async {
+  print("kkkkkkkkkaaaaaaa,,,,,,,,,,,,, ${oldPassword} ${newPassword}");
+  try {
+    changePasswordStatus.value = 'loading';
+    errorMessage.value = '';
+
+    final token = await secureStorage.read('auth_token');
+
+    if (token == null) {
+      throw Exception('Missing authentication info');
     }
-  }
 
+    print("kkkkkkkkk,,,,,,,,,,,,, $token");
+
+    final response = await authRepository.changePassword(
+       token,
+       oldPassword,
+       newPassword,
+    );
+
+    // Store updated info
+    
+    // Update AuthController values
+   
+  
+
+  
+
+    changePasswordStatus.value = 'success';
+    Get.snackbar('Success', response.message);
+    
+   
+  } catch (e) {
+    changePasswordStatus.value = 'error';
+    errorMessage.value = e.toString().replaceFirst('Exception: ', '');
+    Get.snackbar('Error', errorMessage.value);
+  }
+}
 
 
 

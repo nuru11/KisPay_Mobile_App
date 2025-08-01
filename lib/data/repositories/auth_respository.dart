@@ -29,5 +29,9 @@ class AuthRepository {
     return await authService.forgetPassword( email);
   }
 
+  Future<ForgetPasswordResponse> changePassword(String token, String oldPassword, String newPassword) async {
+    return await authService.changePassword(token, oldPassword, newPassword);
+  }
+
 
 }

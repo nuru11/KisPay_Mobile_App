@@ -322,6 +322,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kispay_merchant/core/constant/colors.dart';
+import 'package:kispay_merchant/presentation/controllers/auth_controller.dart';
 import 'package:kispay_merchant/presentation/widgets/app_bar_widget.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
@@ -333,6 +334,7 @@ class ChangePasswordScreen extends StatefulWidget {
 
 class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   final _formKey = GlobalKey<FormState>();
+  final AuthController controller = Get.find<AuthController>();
 
   final oldPasswordController = TextEditingController();
   final newPasswordController = TextEditingController();
@@ -341,6 +343,13 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   bool obscureOld = true;
   bool obscureNew = true;
   bool obscureConfirm = true;
+
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    
+  }
 
   @override
   void initState() {
@@ -430,9 +439,13 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           ),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
+                              controller.changePassword(
+                               
+                                 oldPassword: oldPasswordController.text,
+                                 newPassword: newPasswordController.text,
+                              );
                               // Trigger controller logic
                               Get.snackbar('Success', 'Password changed successfully');
-                              Get.back();
                             }
                           },
                           child: const Text('Change Password', style: TextStyle(color: Colors.white, fontSize: 16)),
